@@ -1,0 +1,171 @@
+@font-face {
+	font-family: "uddigikyokasho";
+    font-weight: 300;
+	src: url("https://nanka.cloudfree.jp/static/font/uddigikyokasho/uddigikyokasho.woff2") format("woff2"),
+    url("https://nanka.cloudfree.jp/static/font/uddigikyokasho/uddigikyokasho.woff") format("woff");
+}
+@font-face {
+	font-family: "uddigikyokasho";
+    font-weight: 600;
+	src: url("https://nanka.cloudfree.jp/static/font/uddigikyokasho/uddigikyokasho-B.woff2") format("woff2"),
+    url("https://nanka.cloudfree.jp/static/font/uddigikyokasho/uddigikyokasho-B.woff") format("woff");
+}
+
+@font-face {
+	font-family: "ヒラギノ角ゴ-Pro";
+    font-weight: 300;
+	src: url("https://nanka.cloudfree.jp/static/font/hiraginokakugo/hiragino_w3.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴ-Pro";
+    font-weight: 400;
+	src: url("../source/font/hiragino_w4.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴ-Pro";
+    font-weight: 500;
+	src: url("../source/font/hiragino_w5.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴ-Pro";
+    font-weight: 600;
+	src: url("../source/font/hiragino_w6.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "password";
+	src: url("https://nanka.cloudfree.jp/static/font/password/pass.woff2") format("woff2");
+}
+@font-face {
+    font-family: "JF-Dot-Ayu";
+    font-weight: 300;
+    src: url("https://nanka.cloudfree.jp/static/font/jfdotayu/JFDotAyu20.woff2") format("woff2"),
+	url("https://nanka.cloudfree.jp/static/font/jfdotayu/JFDotAyu20.woff") format("woff");
+}
+
+@font-face {
+    font-family: "shueimaru";
+    src: url("https://nanka.cloudfree.jp/static/font/shueimaru/shueimaru-B.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "geograph";
+    font-weight: 300;
+    src: url("https://nanka.cloudfree.jp/static/font/geograph/geograph-regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "geograph";
+    font-weight: 400;
+    src: url("https://nanka.cloudfree.jp/static/font/geograph/geograph-medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "geograph";
+    font-weight: 500;
+    src: url("https://nanka.cloudfree.jp/static/font/geograph/geograph-medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "geograph";
+    font-weight: 600;
+    src: url("https://nanka.cloudfree.jp/static/font/geograph/geograph-bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "googlesans";
+    font-weight: 300;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSans-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans";
+    font-weight: 400;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSans-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans";
+    font-weight: 500;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSans-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans";
+    font-weight: 600;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSans-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans-text";
+    font-weight: 300;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSansText-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans-text";
+    font-weight: 400;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSansText-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans-text";
+    font-weight: 500;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSansText-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "googlesans-text";
+    font-weight: 600;
+    src: url("https://nanka.cloudfree.jp/static/font/googlesans/GoogleSansText-Bold.woff2") format("woff2");
+}
+@font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W0);
+    font-weight: 100;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W1);
+    font-weight: 200;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W2);
+    font-weight: 300;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W3);
+    font-weight: 400;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W4);
+    font-weight: 500;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W5);
+    font-weight: 600;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W6);
+    font-weight: 700;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W7);
+    font-weight: 800;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans";
+    src: local(HiraginoSans-W8);
+    font-weight: 900;
+  }
+  @font-face {
+    color: #ffffff;
+    font-family: "Hiragino Sans W9";
+    src: local(HiraginoSans-W9);
+    font-weight: 900;
+  }

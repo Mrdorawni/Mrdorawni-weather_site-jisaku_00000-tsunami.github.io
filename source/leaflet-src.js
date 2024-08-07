@@ -3078,7 +3078,7 @@
   		// By default, the zoom level snaps to the nearest integer; lower values
   		// (e.g. `0.5` or `0.1`) allow for greater granularity. A value of `0`
   		// means the zoom level will not be snapped after `fitBounds` or a pinch-zoom.
-  		zoomSnap: 1,
+  		zoomSnap: 0.2,
 
   		// @option zoomDelta: Number = 1
   		// Controls how much the map's zoom level will change after a

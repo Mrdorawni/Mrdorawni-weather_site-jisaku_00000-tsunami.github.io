@@ -28,7 +28,7 @@ input[type="number"] {
     height: 100%;
 }
 #map.background_nerv {
-    background: #1d1d1d;
+    background: linear-gradient(180deg, #20295C, #2D4A75);
 }
 #title {
     position: absolute;
@@ -121,7 +121,7 @@ input[type="number"] {
     height: 100%;
 }
 #map.background_nerv {
-    background: #1d1d1d;
+    background: linear-gradient(0deg, #20295C, #2D4A75);
 }
 #map.background_wni {
     background: linear-gradient(180deg, rgba(113,163,198,1) 0%, rgba(43,70,119,1) 100%);
@@ -212,7 +212,7 @@ input[type="number"] {
 .btns {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 50px;
     z-index: 10000;
     user-select: none;
 }
@@ -428,7 +428,7 @@ input[type="number"] {
 .info {
     position: absolute;
     bottom: 50px;
-    right: 15px;
+    right: 25px;
     z-index: 10000;
     padding: 10px;
     font-size: 1.6rem;
@@ -632,4 +632,3 @@ rt {font-size: 0.6em;}
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
-  

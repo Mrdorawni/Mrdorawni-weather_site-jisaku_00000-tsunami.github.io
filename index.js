@@ -6,7 +6,7 @@ var map = L.map('map', {
     preferCanvas:true,
 });
 L.control.scale({ maxWidth: 150, position: 'bottomright', imperial: false }).addTo(map);  // スケールを表示
-map.zoomControl.setPosition('topright');
+map.zoomControl.setPosition('bottomleft');
 var PolygonLayer_Style_nerv_1 = {
     "color": "#ffffff",
     "weight": 1,
@@ -98,7 +98,9 @@ var PolygonLayer_Style_test_tsunami_4 = {
 }
 map.createPane("tsunami_map").style.zIndex = 110; //津波
 map.createPane("tsunami_map2").style.zIndex = 120; //津波
+map.createPane("back").style.zIndex = 1; //地図
 map.createPane("pane_map").style.zIndex = 5; //地図
+map.createPane("nihon").style.zIndex = 7; //地図
 map.createPane("shindo10").style.zIndex = 10;
 map.createPane("shindo20").style.zIndex = 20;
 map.createPane("shindo30").style.zIndex = 30;
@@ -119,11 +121,84 @@ var japan_data; //都道府県データ
 var asia_data; //アジア地域高品質ポリゴンデータ 
 var countries_data; //アジア地域を除く世界の低品質ポリゴンデータ
 var cities_data; //市区町村データ
-L.tileLayer('https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+
+//日本
+var PolygonLayer_Style_nerv_J = {
+    "color": "#9C9E9B",
+    "weight": 1.5,
+    "opacity": 1,
+    "fillColor": "#656865",
+    "fillOpacity": 1
+}
+//海外
+var PolygonLayer_Style_nerv_W = {
+    "color": "#9BACC5",
+    "weight": 1.0,
+    "opacity": 1,
+    "fillColor": "#243C62",
+    "fillOpacity": 1
+}
+//日本境
+var nihon = {
+    "color": "#9C9E9B",
+    "weight": 1.0,
+    "opacity": 1,
+    "fillColor": "#ECEDEC",
+    "fillOpacity": 0
+}
+
+$.getJSON("source/prefectures.geojson", function (data) {
+    L.geoJson(data, {
+        pane: "back",
+        style: PolygonLayer_Style_nerv_J
+    }).addTo(map);
+});
+
+$.getJSON("source/prefectures2.geojson", function (data) {
+    L.geoJson(data, {
+        pane: "back",
+        style: PolygonLayer_Style_nerv_W
+    }).addTo(map);
+});
+
+var OSMtile = L.tileLayer('https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
     pane: "pane_map",
     style: PolygonLayer_Style_nerv_1,
-attribution: "地図データ 提供<a href='https://www.google.com/maps' target='_blank'>Google</a>",
+    attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+}).addTo(map); //最初に表示させるタイルに addTo() をつける
+var HOTtile = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+    pane: "pane_map",
+    style: PolygonLayer_Style_nerv_1,
+    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'});
+var OTMtile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+    pane: "pane_map",
+    style: PolygonLayer_Style_nerv_1,
+    attribution: '地図情報:<a href="https://carto.com/" target="_blank">CARTO Dark</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'});
+var chikei = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', {
+    pane: "pane_map",
+    style: PolygonLayer_Style_nerv_1,
+    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'});
+
+var muji = L.tileLayer('', {
+    pane: "pane_map",
+    style: PolygonLayer_Style_nerv_1,
+    attribution: '地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'});
+
+
+L.control.layers({
+    "google衛星": OSMtile,
+    "淡色": HOTtile,
+    "CARTO Dark": OTMtile,
+    "陰影起伏図": chikei,
+    "無地": muji
 }).addTo(map);
+
+$.getJSON("source/prefectures.geojson", function (data) {
+    L.geoJson(data, {
+        pane: "nihon",
+        style: nihon
+    }).addTo(map);
+});
 
 var TsunamiStations;
 $.getJSON("source/stations.json")
@@ -317,7 +392,7 @@ function QuakeSelect(num) {
             mapAddtimeout();
 
             if (foreOrObse[num] == 1) { //津波観測に関する情報
-                document.getElementById('title_text').innerText = "津波情報図";
+                document.getElementById('title_text').innerText = "津波情報";
                 document.getElementById('info2').classList.add("display");
                 document.getElementById('ui_display_onoff_info2_check').checked = true;
                 shindo_layer2 = L.layerGroup();
@@ -379,7 +454,7 @@ function QuakeSelect(num) {
             yososhindoCreate();
             document.getElementById('text_yososhindo').classList.add("display");
         } else if (foreOrObse[num] == 3) { //沖合の津波観測に関する情報
-            document.getElementById('title_text').innerText = "津波情報図";
+            document.getElementById('title_text').innerText = "津波情報";
             document.getElementById('info2').classList.add("display");
             document.getElementById('ui_display_onoff_info2_check').checked = true;
             document.getElementById('info3').classList.add("display");

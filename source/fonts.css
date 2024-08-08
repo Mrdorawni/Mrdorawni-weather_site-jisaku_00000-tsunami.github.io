@@ -1,0 +1,47 @@
+/*
+@font-face {
+    font-family: 'ヒラギノ角ゴシック';
+    src: url('https://mrdorawni.github.io/font/W6/HiraKakuProN-W6-AlphaNum-01.otf') format('opentype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'ヒラギノ角ゴシック';
+    src: url('https://mrdorawni.github.io/font/W5/HiraKakuProN-W5-AlphaNum-01.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ヒラギノ角ゴシック';
+    src: url('https://mrdorawni.github.io/font/W4/HiraKakuProN-W4-AlphaNum-01.otf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ヒラギノ角ゴシック';
+    src: url('https://mrdorawni.github.io/font/W3/HiraKakuProN-W3-AlphaNum-01.otf') format('opentype');
+    font-weight: 300;
+}
+*/
+
+
+@font-face {
+	font-family: "ヒラギノ角ゴシック";
+    font-weight: 300;
+	src: url("https://nanka.cloudfree.jp/static/font/hiraginokakugo/hiragino_w3.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴシック";
+    font-weight: 400;
+	src: url("../source/font/hiragino_w4.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴシック";
+    font-weight: 500;
+	src: url("../source/font/hiragino_w5.woff2") format("woff2");
+}
+@font-face {
+	font-family: "ヒラギノ角ゴシック";
+    font-weight: 600;
+	src: url("../source/font/hiragino_w6.woff2") format("woff2");
+}

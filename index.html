@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>津波情報</title>
+        <link rel="icon" href="https://mrdorawni.github.io/favicon/VIS/favicon.ico">
+        <meta charset="UTF-8" lang="ja">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="津波情報">
+        <!--SNSでのサイト表示-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:site" content="tsunami">
+        <meta property="twitter:description" content="大津波警報、津波警報、津波注意報、津波予報を地図上で見られます。">
+        <meta property="og:title" content="津波情報">
+        <meta property="og:site_name" content="津波情報">
+        <meta property="og:image" content="source/og.png">
+        <!--その他のCSS・ライブラリ読み込み-->
+        <script async src="source/js/G-ZL8HPL24E7.js"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZL8HPL24E7');
+        </script>
+        <script src="source/js/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="source/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+        <script src="source/js/js.cookie.min.js"></script>
+        <script src="source/js/leaflet-src.js"></script>
+        <link rel="stylesheet" href="source/fonts.css">
+        <link rel="stylesheet" href="index.css">    
+    </head>
+    <body>
+        <div id="map" class="background_nerv"></div>
+            <img height="89.5885px" src="source/Headline1.png" class="headline">
+            <img height="89.5885px" src="source/Headline1-2.png" class="headline">
+            <div id="title_text">津波情報</div>
+            <img height="72px" src="source/Headline2.png" class="timeimg">
+            <div id="title" class="display">
+            <div class="timetext">
+                <span id="view_clock"></span>
+
+				<span id="view_today"></span>
+
+                <script src="source/js/day.js"></script><span id="title_time">00時00分現在</span>
+</div>
+        </div>
+        <div id="info1" class="info">
+            選択中の海岸の津波情報<br>
+            発表地域：<br>
+            発表種類：
+        </div>
+        <div id="info2" class="info">
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td></td>
+                    <td><span style="font-size: 0.7em;">以上</span></td>
+                    <td></td>
+                </tr>
+                <tr><td style="color: #8900c7;">█</td><td>5m</td><td>～</td></tr>
+                <tr><td style="color: #ff00d9;">█</td><td>3m</td><td>～</td></tr>
+                <tr><td style="color: #fd000d;">█</td><td>2m</td><td>～</td></tr>
+                <tr><td style="color: #ff7a00;">█</td><td>1m</td><td>～</td></tr>
+                <tr><td style="color: #e2df24;">█</td><td>0.5m</td><td>～</td></tr>
+                <tr><td style="color: #10b4eb;">█</td><td>～</td><td>0.5m</td></tr>
+                <tr><td style="color: #1adf11;">█</td><td colspan="2">観測中</td></tr>
+            </table>
+        </div>
+        <div id="info3" class="info"></div>
+
+        <div class="btns">
+            <div>
+                <select id="quakelist" style="width: 25em;height: calc(2em + 5px);"><option>津波情報の取得中…</option></select>
+                <button id="reload">情報更新</button>
+                <button id="map_ichi">位置初期化</button>
+                <button id="btn_text_yososhindo" class="setsumei">津波到達時刻・高さ</button>
+                <!--<button id="menu-open-btn">情報</button>-->
+                <span class="setsumei" id="display_onoff" style="padding: 2px 5px;">表示 
+                    <input type="checkbox" name="shindo_ichiran" id="display_onoff_point_check" checked><label for="display_onoff_point_check">観測点</label>
+                    <input type="checkbox" name="shindo_ichiran" id="display_onoff_fill_check" checked><label for="display_onoff_fill_check">海岸線</label>
+                </span>
+                <span class="setsumei" id="ui_display_onoff" style="padding: 2px 5px;">UI 
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_title_check" checked>
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_info1_check" checked><label for="ui_display_onoff_info1_check">選択海岸 詳細情報</label>
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_info2_check" checked><label for="ui_display_onoff_info2_check">観測実況 凡例</label>
+                </span>
+            </div>
+            
+        </div>
+
+        <div id="text_yososhindo">
+            <span id="close_text_yososhindo">×</span>
+            <button id="btn_mikata_text_yososhindo"></button>
+            <div class="mihon">
+                <div style="background-color: #dd00dd;color: #ffffff;">大津波警報</div><div style="background-color: #ff1400;color: #ffffff;">津波警報</div><div style="background-color: #faf500;color: #000000;">津波注意報</div><div style="background-color: #00ccff;color: #000000;">津波予報<span style="font-size: 0.7em;">(情報表示未対応)</span></div>
+            </div>
+            <table id="table_text_yososhindo">
+                <tr><td><ruby>地域名<rt>ちいきめい</rt></ruby></td><td>到達時刻</td><td>到達状況</td><td>大きさ</td></tr>
+            </table>
+            <div id="mikata_text_yososhindo">
+                <span id="close_mikata_text_yososhindo">×</span>
+                <img id="img_mikata_text_yososhindo" src="source/doc/point_mikata_text_yososhindo.png">
+                <!-- <img src="source/tsunami/mikata_text_yososhindo.png"> -->
+            </div>
+        </div>
+
+        <div id="menu">
+            <span class="material-symbols-rounded" id="menu-close">×</span>
+            <table>
+                <tr><td colspan="4" class="header">情報提供元</td></tr>
+                <tr><td>・</td><td>GeoJSON地図データ</td><td>by</td><td>Natural Earth</td></tr>
+                <tr><td>・</td><td>GeoJSON海岸線データ</td><td>by</td><td>基盤地図情報</td></tr>
+                <tr><td>・</td><td>Web地図システム</td><td>by</td><td>Leaflet</td></tr>
+                <tr><td>・</td><td>PHPサーバー津波情報</td><td>by</td><td>MiyakojimaCam</td></tr>
+                <tr><td>・</td><td>津波情報</td><td>by</td><td>P2P地震情報</td></tr>
+            </table>
+        </div>
+
+        <script src="source/js/stationscode.js"></script>
+        <script src="source/js/tsunamidata2.js"></script>
+        <script src="source/js/menu.js"></script>
+        <script src="index.js"></script>
+
+        <!--
+            <img height="89.5885px" src="source/Headline1.png" class="headline">
+            <div class="title">
+                津波情報</div>
+        -->
+    </body>
+</html>

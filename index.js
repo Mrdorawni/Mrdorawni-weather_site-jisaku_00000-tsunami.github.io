@@ -229,16 +229,8 @@ var hyoko_color = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{
 
 L.control.layers({
     "単色(black)": base,
-    "地図": google1,  
-    "航空写真": google2,
-    "航空+地図": google3,
-    "地図(透過)": google4,
     "地理院地図(淡色)": tanshoku,
     "地理院地図(標準)": hyojun,
-    "CARTO Dark": dark,
-    "地理院陰影起伏図": inei,
-    "地理院色別標高図": hyoko_color,
-    
 }).addTo(map);
 
 $.getJSON("source/prefectures.geojson", function (data) {

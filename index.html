@@ -45,9 +45,18 @@
 </div>
         </div>
         <div id="info1" class="info">
-            選択中の海岸の津波情報<br>
-            発表地域：<br>
-            発表種類：
+            <table cellspacing="0" cellpadding="0">
+
+                <tr><td style="color: #dd00dd;">█</td><td>&nbsp;大津波警報</td></tr>
+                <tr><td style="color: #ff1400;">█</td><td>&nbsp;津波警報</td></tr>
+                <tr><td style="color: #faf500;">█</td><td>&nbsp;津波注意報</td></tr>
+                <tr><td style="color: #00ccff;">█</td><td>&nbsp;津波予報(若干の海面変動)</td></tr>
+            <!--
+                <tr><td style="color: #e2df24;">█</td><td>0.5m</td></tr>
+                <tr><td style="color: #10b4eb;">█</td><td></tr>
+                <tr><td style="color: #1adf11;">█</td><td colspan="2">観測中</td></tr>
+            -->
+            </table>
         </div>
         <div id="info2" class="info">
             <table cellspacing="0" cellpadding="0">
@@ -71,7 +80,7 @@
             <div>
                 <select id="quakelist" style="width: 25em;height: calc(2em + 5px);"><option>津波情報の取得中…</option></select>
                 <button id="reload">情報更新</button>
-                <button id="map_ichi">位置初期化</button>
+                <button id="map_ichi">全国</button>
                 <button id="btn_text_yososhindo" class="setsumei"><span style="cursor:pointer;">津波到達時刻・高さ</span></button>
                 <!--<button id="menu-open-btn">情報</button>-->
                 <span class="setsumei" id="display_onoff" style="padding: 2px 5px;">表示 

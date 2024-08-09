@@ -3078,14 +3078,14 @@
   		// By default, the zoom level snaps to the nearest integer; lower values
   		// (e.g. `0.5` or `0.1`) allow for greater granularity. A value of `0`
   		// means the zoom level will not be snapped after `fitBounds` or a pinch-zoom.
-  		zoomSnap: 0.5,
+  		zoomSnap: 0.2,
 
   		// @option zoomDelta: Number = 1
   		// Controls how much the map's zoom level will change after a
   		// [`zoomIn()`](#map-zoomin), [`zoomOut()`](#map-zoomout), pressing `+`
   		// or `-` on the keyboard, or using the [zoom controls](#control-zoom).
   		// Values smaller than `1` (e.g. `0.5`) allow for greater granularity.
-  		zoomDelta: 1,
+  		zoomDelta: 0.5,
 
   		// @option trackResize: Boolean = true
   		// Whether the map automatically handles browser window resize to update itself.

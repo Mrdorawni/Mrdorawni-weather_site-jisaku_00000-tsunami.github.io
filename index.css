@@ -33,10 +33,9 @@ input[type="number"] {
 #title {
     position: absolute;
     top: 100px;
-    left: -10px;
+    left: -20px;
     z-index: 10000;
     font-weight: 600;
-    user-select: none;
     display: none;
 }
 #title.display {
@@ -48,7 +47,7 @@ input[type="number"] {
     bottom: 10px;
     left: 10px;
     z-index: 10000;
-    user-select: none;
+    
 }
 .setsumei, #quakelist, #reload, #map_ichi, #test, #btn_shindo_ichiran, #autoreload, #menu-open-btn {
     display: inline-block;
@@ -92,7 +91,7 @@ input[type="number"] {
     border-radius: 0!important;
     font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
     font-weight: 500;
-    user-select: none;
+    
 }
 .leaflet-popup-content {
     color: black !important;
@@ -138,7 +137,7 @@ input[type="number"] {
     border-radius: 0!important;
     font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
     font-weight: 500;
-    user-select: none;
+    
 }
 .leaflet-popup-content {
     color: black !important;
@@ -155,14 +154,12 @@ input[type="number"] {
     position: absolute;
     font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
     font-weight: 500;
-    top: 108px;
-    left: -10px;
+    top: 107px;
+    left: -20px;
     z-index: 10000;
     font-weight: 500;
-    user-select: none;
     color: white;
     z-index: 1000000;
-    cursor: default;
 }
 #title_text {
     position: absolute;
@@ -171,7 +168,6 @@ input[type="number"] {
     font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
     font-weight: 500;
     text-shadow: 1px 1px 0 #929292;    
-    cursor: default;
     max-width: 100%;
     max-height: 100%;
     padding: 25px;
@@ -179,7 +175,7 @@ input[type="number"] {
     text-align: left;
     z-index: 100000;
     font-size: 57px;
-    color: #ffffff;
+    color: #ffffff; 
 }
 
 #info {
@@ -214,7 +210,7 @@ input[type="number"] {
     bottom: 10px;
     left: 50px;
     z-index: 10000;
-    user-select: none;
+    
 }
 .setsumei, #quakelist, #reload, #map_ichi, #test, #btn_shindo_ichiran, #autoreload, #display_onoff_point_check, #view_info {
     display: inline-block;
@@ -413,7 +409,7 @@ input[type="number"] {
     right: 2rem;
     top: 2rem;
     cursor: pointer;
-    user-select: none;
+    
     transition: transform 0.25s ease-in-out 0s;
 }
 #info_closebtn:hover {
@@ -560,7 +556,7 @@ rt {font-size: 0.6em;}
     top: 10px;
     font-size: 40px;
     z-index: 100;
-    user-select: none;
+    
     cursor: pointer;
     color: white;
 }
@@ -607,16 +603,25 @@ rt {font-size: 0.6em;}
 .timeimg{
     position: absolute;
     top: 105px;
-    left: -3390px;
+    left: -3410px;
     z-index: 100000;
 } 
 
 .timetext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
-    padding-left: 30px;
+    padding-left: 40px;
+    padding-right: 20px;
     font-size: 45px;
-    z-index: 10000000;    
+    z-index: 10000000; 
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    background-color: rgb(64, 64, 64, 0.8);     
 }
+
   
 .material-symbols-rounded {
     font-family: "ヒラギノ角ゴシック",'Arial','ＭＳ ゴシック';

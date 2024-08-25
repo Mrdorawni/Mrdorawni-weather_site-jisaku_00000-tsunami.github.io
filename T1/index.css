@@ -1,0 +1,310 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    font-size: 14px;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 14px;
+}
+select, input, button {
+    outline: none;
+}
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+} 
+input[type="number"] { 
+    -moz-appearance:textfield; 
+    appearance:textfield; 
+} 
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#title {
+    position: absolute;
+    top: 100px;
+    left: -20px;
+    z-index: 10000;
+    font-weight: 600;
+    user-select: none;
+    display: none;
+}
+#title.display {
+    display: block;
+}
+
+.leaflet-popup {
+    margin-bottom: 0;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 3px 7px 2px rgba(0, 0, 0, 0.4);
+    border-radius: 0!important;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    user-select: none;
+}
+.leaflet-popup-content {
+    color: black !important;
+    font-size: 1.4rem;
+    margin: 10px 8px 8px 8px;
+}
+.leaflet-popup-tip {
+    display: none;
+}
+.leaflet-fade-anim .leaflet-popup {
+    transition: 0s;
+}
+select, input, button {
+    outline: none;
+}
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+} 
+input[type="number"] { 
+    -moz-appearance:textfield; 
+} 
+#map {
+    width: 100%;
+    height: 100%;
+}
+#map.background {
+    background: rgb(0, 0, 0, 0.85);
+}
+
+.leaflet-popup {
+    margin-bottom: 0;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 3px 7px 2px rgba(0, 0, 0, 0.4);
+    border-radius: 0!important;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    user-select: none;
+}
+.leaflet-popup-content {
+    color: black !important;
+    font-size: 1.4rem;
+    margin: 10px 8px 8px 8px;
+}
+.leaflet-popup-tip {
+    display: none;
+}
+.leaflet-fade-anim .leaflet-popup {
+    transition: 0s;
+}
+#title {
+    position: absolute;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    font-weight: 500;
+    user-select: none;
+    color: white;
+    z-index: 1000000;
+}
+#title_text {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;   
+    cursor: default;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 0px;
+    padding-left: 0px;
+    text-align: left;
+    z-index: 100000;
+    font-size: 0px;
+    color: #ffffff; 
+}
+
+.leaflet-tooltip {
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0!important;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    font-size: 1.6rem;
+    padding: 5px;
+}
+.leaflet-tooltip:before, .leaflet-tooltip:after {
+    content: "";
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0!important;
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    padding: 5px;
+}
+.leaflet-tooltip rt {
+    font-size: 0.7em;
+}
+.center_circle_tooltip {
+    line-height: 1.2em;
+    font-weight: 500;
+    padding: 7px;
+    padding-top: calc(7px + 0.7em);
+}
+
+.headline {
+    position: absolute;
+    top: 18px;
+    left: -1380px;
+    z-index: 10000;
+}
+.timeimg{
+    position: absolute;
+    top: 105px;
+    left: -3410px;
+    z-index: 100000;
+} 
+
+.timetext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 0px;
+    z-index: 0; 
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    background-color: rgb(64, 64, 64, 0.8);     
+}
+
+  
+.material-symbols-rounded {
+    font-family: "ヒラギノ角ゴシック",'Arial','ＭＳ ゴシック';
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.up {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 10000;
+    user-select: none;
+}
+
+#reload {
+    font-family: "ヒラギノ角ゴシック",'ヒラギノ丸ゴ ProN','Arial','ＭＳ ゴシック';
+    font-size:  30px;
+    background-color: rgb(0, 0, 0, 0);
+    border: 0px solid;
+    cursor: wait;
+}
+
+.yosotakasa {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 10000;
+    user-select: none;
+}
+
+.joho_sentaku {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    z-index: 1000000;
+    color: #ffffff;
+}
+
+.jishin_sentaku {
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    z-index: 1000000;
+    color: #ffffff;    
+}
+
+.zenkoku {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    z-index: 1000000;
+    color: #ffffff;    
+}
+
+.waku {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;    
+    display:flex;
+    z-index: 0;
+}
+
+
+.waku_box {
+    width: 800px;
+    height: 800px;
+    display: flex;
+    border: 1px solid #ffffff  
+}
+
+.hanrei {
+    position: absolute;
+    top: calc(50% + 340px);
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;    
+    display:flex;
+    z-index: 100000;
+}
+
+.hanrei_text {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: end; 
+    padding-bottom: 30px; 
+    font-family: "HiraginoSans-W7",'ヒラギノ丸ゴ ProN','メイリオ','ＭＳ ゴシック';
+    font-weight: 800;
+    font-size: 47px;
+    text-align: center;
+    transform: scale(0.65, 1);
+    /*-webkit-text-stroke: 2px #000000;*/
+    text-shadow:2px 2px 0 #000000, -2px -2px 0 #000000,
+              -2px 2px 0 #000000, 2px -2px 0 #000000,
+              0px 2px 0 #000000,  0-2px 0 #000000,
+              -2px 0 0 #000000, 2px 0 0 #000000;
+}

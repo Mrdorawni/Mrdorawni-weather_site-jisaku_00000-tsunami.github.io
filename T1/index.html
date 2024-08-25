@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>津波情報</title>
+        <link rel="icon" href="https://mrdorawni.github.io/Mrdorawni-weather_site-jisaku_00000-sozai_img-and-favicon_files/favicon/VIS/favicon.ico">
+        <meta charset="UTF-8" lang="ja">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script async src="source/js/G-ZL8HPL24E7.js"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZL8HPL24E7');
+        </script>
+        <script src="source/js/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="source/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+        <script src="source/js/js.cookie.min.js"></script>
+        <script src="source/js/leaflet-src.js"></script>
+        <link rel="stylesheet" href="source/fonts.css">
+        <link rel="stylesheet" href="index.css">
+        <meta name="robots" content="noindex, nofollow">    
+    </head>
+    <body>
+
+        
+        <!--leaflet地図表示部分-->
+            <div id="map" class="background"></div>
+        <!--ティッカー用改造のため非表示部分(ソースごと消すとバグる)-->
+            <div id="info1" class="info"></div>
+            <div id="info2" class="info"></div>
+            <div id="info3" class="info"></div>
+            <button id="btn_text_yososhindo"></button>
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_title_check" checked>
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_info1_check" checked>
+                    <input type="checkbox" name="shindo_ichiran" id="ui_display_onoff_info2_check" checked>
+            <span id="close_text_yososhindo"></span>
+            <button id="btn_mikata_text_yososhindo"></button>
+            <span id="close_mikata_text_yososhindo"></span>
+        <!--ここまで非表示部分-->
+
+        <!--左上 更新ボタンなど-->
+            <div class="up">
+                <button id="reload">🆙</button>
+            </div>
+            <div class="zenkoku">
+                <button id="map_ichi">全国</button>
+            </div>
+            <span class="jishin_sentaku">
+                <select id="tuamamilist" style="width: 20px"><option>選択</option></select>
+            </span>
+        <!--左下チェックボックス-->
+                <span class="joho_sentaku">
+                    <input type="checkbox" name="shindo_ichiran" id="display_onoff_point_check" checked><label for="display_onoff_point_check">観測点</label>
+                    <input type="checkbox" name="shindo_ichiran" id="display_onoff_fill_check" checked><label for="display_onoff_fill_check">海岸線</label>
+                </span>
+                
+        <!--JS読み込み-->              
+            <script src="source/js/stationscode.js"></script>
+            <script src="source/js/tsunamidata2.js"></script>
+            <script src="source/js/menu.js"></script>
+            <script src="index.js"></script>
+
+
+        <!--出力枠-->
+        <div class="waku">
+            <div class="waku_box"></div>
+        </div>
+
+        <!--大津波警報・津波警報・津波注意報・津波予報凡例-->
+
+        <div class="hanrei">
+            <div class="hanrei_text">
+                    <div style="color: #D12EDC;">■</div>大津波警報
+                        &nbsp;
+                    <div style="color: #CF2D20;">■</div>津波警報
+                        &nbsp;
+                    <div style="color: #E2E54C;">■</div>津波注意報
+                        &nbsp;
+                    <div style="color: #00ccff;">■</div>津波予報
+                        &nbsp;
+            </div>
+        </div>
+
+    </body>
+</html>

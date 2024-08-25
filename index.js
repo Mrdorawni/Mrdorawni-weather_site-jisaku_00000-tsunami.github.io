@@ -65,28 +65,28 @@ var PolygonLayer_Style_quarog_3 = {
     "fillOpacity": 0,
 }
 var PolygonLayer_Style_test_tsunami_1 = {
-    "color": "#dd00dd",
+    "color": "#D12EDC",
     "weight": 8,
     "opacity": 1,
 }
 var PolygonLayer_Style_test_tsunami_2 = {
-    "color": "#ff1400",
+    "color": "#CF2D20",
     "weight": 7,
     "opacity": 1,
 }
 var PolygonLayer_Style_test_tsunami_2_kaijo = {
-    "color": "#ff1400",
+    "color": "#CF2D20",
     "weight": 5,
     "opacity": 1,
     "dashArray": "3 8"
 }
 var PolygonLayer_Style_test_tsunami_3 = {
-    "color": "#faf500",
+    "color": "#E2E54C",
     "weight": 7,
     "opacity": 1,
 }
 var PolygonLayer_Style_test_tsunami_3_kaijo = {
-    "color": "#faf500",
+    "color": "#E2E54C",
     "weight": 5,
     "opacity": 1,
     "dashArray": "3 8"
@@ -96,22 +96,11 @@ var PolygonLayer_Style_test_tsunami_4 = {
     "weight": 7,
     "opacity": 1,
 }
-map.createPane("tsunami_map").style.zIndex = 110; //津波
-map.createPane("tsunami_map2").style.zIndex = 120; //津波
-map.createPane("back").style.zIndex = 1; //地図
-map.createPane("pane_map").style.zIndex = 5; //地図
-map.createPane("nihon").style.zIndex = 7; //地図
-map.createPane("shindo10").style.zIndex = 10;
-map.createPane("shindo20").style.zIndex = 20;
-map.createPane("shindo30").style.zIndex = 30;
-map.createPane("shindo40").style.zIndex = 40;
-map.createPane("shindo45").style.zIndex = 45;
-map.createPane("shindo46").style.zIndex = 46;
-map.createPane("shindo50").style.zIndex = 50;
-map.createPane("shindo55").style.zIndex = 55;
-map.createPane("shindo60").style.zIndex = 60;
-map.createPane("shindo70").style.zIndex = 70;
-map.createPane("shingen").style.zIndex = 100; //震源
+map.createPane("tsunami_map").style.zIndex = 110; //津波情報(大津波警報・津波警報・津波注意報・津波予報)のライン
+map.createPane("tsunami_map2").style.zIndex = 120; //津波観測値
+map.createPane("back").style.zIndex = 1; //地図(日本・世界)
+map.createPane("pane_map").style.zIndex = 5; //地図(タイルレイヤ)
+map.createPane("nihon").style.zIndex = 7; //日本境
 Cookies.remove('visited');
 var japan; //都道府県
 var asia; //アジア地域高品質ポリゴン 
@@ -123,134 +112,146 @@ var countries_data; //アジア地域を除く世界の低品質ポリゴンデ�
 var cities_data; //市区町村データ
 
 //日本
-var PolygonLayer_Style_nerv_J = {
-    "color": "#9C9E9B",
-    "weight": 1.5,
-    "opacity": 1,
-    "fillColor": "#656865",
-    "fillOpacity": 1
-}
+    //データ取得
+        $.getJSON("source/prefectures.geojson", function (data) {
+            L.geoJson(data, {
+                pane: "back",
+                style: PolygonLayer_Style_nerv_J
+            }).addTo(map);
+        });
+    //色設定
+        var PolygonLayer_Style_nerv_J = {
+            "color": "#000000",
+            "weight": 0,
+            "opacity": 1,
+            "fillColor": "#009b3b",
+            "fillOpacity": 1
+        }
 //海外
-var PolygonLayer_Style_nerv_W = {
-    "color": "#9BACC5",
-    "weight": 1.0,
-    "opacity": 1,
-    "fillColor": "#243C62",
-    "fillOpacity": 1
-}
+    //データ取得
+        $.getJSON("source/prefectures2.geojson", function (data) {
+            L.geoJson(data, {
+                pane: "back",
+                style: PolygonLayer_Style_nerv_W
+            }).addTo(map);
+        });
+    //色設定
+        var PolygonLayer_Style_nerv_W = {
+            "color": "#9BACC5",
+            "weight": 1.0,
+            "opacity": 1,
+            "fillColor": "#243C62",
+            "fillOpacity": 1
+        }
 //日本境
-var nihon = {
-    "color": "#9C9E9B",
-    "weight": 1.0,
-    "opacity": 1,
-    "fillColor": "#ECEDEC",
-    "fillOpacity": 0
-}
+    //データ取得
+        $.getJSON("source/prefectures.geojson", function (data) {
+            L.geoJson(data, {
+                pane: "nihon",
+                style: nihon
+            }).addTo(map);
+        });
+    //色設定
+        var nihon = {
+            "color": "#000000",
+            "weight": 1.0,
+            "opacity": 1,
+            "fillColor": "#ECEDEC",
+            "fillOpacity": 0
+        }
+//MAP種類設定(レイヤボタン)        
+    //最初に表示させるタイルに addTo() をつける
 
-$.getJSON("source/prefectures.geojson", function (data) {
-    L.geoJson(data, {
-        pane: "back",
-        style: PolygonLayer_Style_nerv_J
-    }).addTo(map);
-});
+    //自作geojson
+        //単色
+            var base = L.tileLayer('', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            }).addTo(map);
 
-$.getJSON("source/prefectures2.geojson", function (data) {
-    L.geoJson(data, {
-        pane: "back",
-        style: PolygonLayer_Style_nerv_W
-    }).addTo(map);
-});
-//自作geojson
-var base = L.tileLayer('', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-}).addTo(map);
+    //ここからタイルマップ
+        //google標準
+            var google1 = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //google航空
+            var google2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //google航空地図
+            var google3 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //google透過
+            var google4 = L.tileLayer('https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //地理院淡色
+            var tanshoku = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //地理院標準
+            var hyojun = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //ダーク
+            var dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://carto.com/" target="_blank">CARTO Dark</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //地理院陰影
+            var inei = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
+        //地理院色別標高
+            var hyoko_color = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', {
+                pane: "pane_map",
+                style: PolygonLayer_Style_nerv_1,
+                //attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
+            });
 
-//ここからタイルマップ
+    //レイヤコントロールボタン
+        L.control.layers({
+            "単色(black)": base,
+            "地図": google1,  
+            "航空写真": google2,
+            "航空+地図": google3,
+            "地図(透過)": google4,
+            "地理院地図(淡色)": tanshoku,
+            "地理院地図(標準)": hyojun,
+            "CARTO Dark": dark,
+            "地理院陰影起伏図": inei,
+            "地理院色別標高図": hyoko_color,
+        }).addTo(map);
 
-var google1 = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var google2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-}); //最初に表示させるタイルに addTo() をつける
-
-var google3 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var google4 = L.tileLayer('https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://www.google.com/maps" target="_blank">googleマップ</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var tanshoku = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var hyojun = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://carto.com/" target="_blank">CARTO Dark</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var inei = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-var hyoko_color = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', {
-    pane: "pane_map",
-    style: PolygonLayer_Style_nerv_1,
-    attribution: '地図情報:<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>、地震・津波情報:<a href="https://www.p2pquake.net/" target="_blank">P2P地震情報</a>'
-});
-
-
-
-
-
-L.control.layers({
-    "単色(black)": base,
-    "地理院地図(淡色)": tanshoku,
-    "地理院地図(標準)": hyojun,
-}).addTo(map);
-
-$.getJSON("source/prefectures.geojson", function (data) {
-    L.geoJson(data, {
-        pane: "nihon",
-        style: nihon
-    }).addTo(map);
-});
-
-var TsunamiStations;
-$.getJSON("source/stations.json")
-.done (function (data) {
-    TsunamiStations = data;
-});
-var AreaNameToYomi;
-$.getJSON("source/areanamekana.json")
-.done (function (data) {
-    AreaNameToYomi = data;
-});
-
+//観測点
+    var TsunamiStations;
+    $.getJSON("source/stations.json")
+    .done (function (data) {
+        TsunamiStations = data;
+    });
+//沿岸ヨミ
+    var AreaNameToYomi;
+    $.getJSON("source/areanamekana.json")
+    .done (function (data) {
+        AreaNameToYomi = data;
+    });
 
 map.on('zoomend', function(e) {
     if (cities) {
@@ -267,10 +268,10 @@ if (cities) {
         
     }
 
-var list = document.getElementById('quakelist');
+var list = document.getElementById('tuamamilist');
 list.onchange = event => {
     console.log(list.selectedIndex);
-    QuakeSelect(list.selectedIndex);
+    tsunamiselect(list.selectedIndex);
 }
 
 var QuakeJson;
@@ -295,7 +296,6 @@ async function GetQuake(option) {
         var getminute = ('0' + gettime.getMinutes()).slice(-2);
         var getsecond = ('0' + gettime.getSeconds()).slice(-2);
         var weekDay = ["日", "月", "火", "水", "木", "金", "土"];
-        document.getElementById('title_time').innerHTML = gethour+'時'+getminute+'分現在';
         var int = 0;
         while (list.lastChild) {
             list.removeChild(list.lastChild);
@@ -340,12 +340,12 @@ async function GetQuake(option) {
         });
         setTimeout(() => {
             
-        QuakeSelect(0);
+        tsunamiselect(0);
         }, 50);
     })
 }
 
-function QuakeSelect(num) {
+function tsunamiselect(num) {
     var mapAdd = false;
     var mapAdd_num = 0;
     var tsunami_forecast_howmany;
@@ -363,7 +363,6 @@ function QuakeSelect(num) {
         QuakeDetails = data;
         allInfoRemove();
         if (foreOrObse[num] == 0 || foreOrObse[num] == 1) { //津波警報・注意報・予報
-            document.getElementById('title_text').innerText = "津波情報";
             document.getElementById('info1').classList.add("display");
             document.getElementById('ui_display_onoff_info1_check').checked = true;
             tsunami_forecast_howmany = QuakeDetails["Body"]["Tsunami"]["Forecast"]["Item"].length;
@@ -432,7 +431,6 @@ function QuakeSelect(num) {
             mapAddtimeout();
 
             if (foreOrObse[num] == 1) { //津波観測に関する情報
-                document.getElementById('title_text').innerText = "津波情報";
                 document.getElementById('info2').classList.add("display");
                 document.getElementById('ui_display_onoff_info2_check').checked = true;
                 shindo_layer2 = L.layerGroup();
@@ -494,7 +492,6 @@ function QuakeSelect(num) {
             yososhindoCreate();
             document.getElementById('text_yososhindo').classList.add("display");
         } else if (foreOrObse[num] == 3) { //沖合の津波観測に関する情報
-            document.getElementById('title_text').innerText = "津波情報";
             document.getElementById('info2').classList.add("display");
             document.getElementById('ui_display_onoff_info2_check').checked = true;
             document.getElementById('info3').classList.add("display");
@@ -560,13 +557,13 @@ function mousehover(name,type) {
     let info = document.getElementById('info1');
     info.innerHTML = "選択中の海岸の津波情報<br>発表地域："+'<ruby>'+name+'<rt>'+AreaNameToYomi[name]+'</rt></ruby>'+"<br>発表種類："+type;
     if (type == "大津波警報") {
-        info.style.background = "#dd00ddcc";
+        info.style.background = "#D12EDCcc";
         info.style.color = "#ffffff";
     } else if (type == "津波警報" || type == "津波警報解除") {
-        info.style.background = "#ff1400cc";
+        info.style.background = "#CF2D20cc";
         info.style.color = "#ffffff";
     } else if (type == "津波注意報" || type == "津波注意報解除") {
-        info.style.background = "#faf500cc";
+        info.style.background = "#E2E54Ccc";
         info.style.color = "#000000";
     } else if (type == "津波予報") {
         info.style.background = "#00ccffcc";
@@ -778,9 +775,9 @@ document.getElementById('reload').addEventListener("click",()=>{
     GetQuake();
     document.getElementById('reload').innerText = "更新中…";
     koushin = setTimeout(() => {
-        document.getElementById('reload').innerText = "更新完了";
+        document.getElementById('reload').innerText = "🆙";
         koushin_ok = setTimeout(() => {
-            document.getElementById('reload').innerText = "情報更新";
+            document.getElementById('reload').innerText = "🆙";
         }, 1000);
     }, 1000);
 });
@@ -853,9 +850,7 @@ document.getElementById('display_onoff_fill_check').addEventListener("change",()
 });
 document.getElementById('ui_display_onoff_title_check').addEventListener("change",()=>{
     if (document.getElementById('ui_display_onoff_title_check').checked) {
-        document.getElementById('title').classList.add("display");
     } else {
-        document.getElementById('title').classList.remove("display");
     }
 });
 document.getElementById('ui_display_onoff_info1_check').addEventListener("change",()=>{
@@ -872,3 +867,6 @@ document.getElementById('ui_display_onoff_info2_check').addEventListener("change
         document.getElementById('info2').classList.remove("display");
     }
 });
+
+
+

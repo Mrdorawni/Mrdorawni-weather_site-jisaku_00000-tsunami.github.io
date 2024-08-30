@@ -154,7 +154,7 @@ $.getJSON("source/prefectures.geojson", function (data) {
     }).addTo(map);
 });
 
-$.getJSON("source/prefectures2.geojson", function (data) {
+$.getJSON("source/world.geojson", function (data) {
     L.geoJson(data, {
         pane: "back",
         style: PolygonLayer_Style_nerv_W

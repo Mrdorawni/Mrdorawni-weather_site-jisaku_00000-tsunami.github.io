@@ -25,7 +25,7 @@
         });
 
         // GeoJSONデータのソース追加
-        const geojsonUrl = 'path/to/japan_prefectures.geojson'; // GeoJSONファイルのパス
+        const geojsonUrl = 'source/prefectures.geojson'; // GeoJSONファイルのパス
         map.on('load', () => {
             map.addSource('japan', {
                 type: 'geojson',
